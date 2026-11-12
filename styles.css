@@ -61,6 +61,43 @@ body {
 .menu-link:hover::after {
     width: 100%;
 }
+
+.menu-toggle {
+  display: none;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 1rem;
+  list-style: none;
+}
+
+@media (max-width: 700px) {
+  .menu-toggle {
+    display: block;
+    margin-left: auto;
+    padding: 0.75rem 1rem;
+    background: none;
+    border: 0;
+    color: #fff;
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .menu.aberto {
+    display: flex;
+  }
+}
  
 .cabecalho {
     min-height: 100vh;
@@ -120,7 +157,6 @@ h1 {
     margin-bottom: 1rem;
 }
  
-/* ===== Tecnologias ===== */
 .tecnologias {
     padding: 6rem 2rem;
 }
@@ -246,7 +282,6 @@ h1 {
     margin-bottom: 5px;
 }
  
-/* ===== Contato ===== */
 .contatos {
     padding: 6rem 2rem;
 }
