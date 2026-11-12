@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="tecnologias.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
@@ -24,6 +26,9 @@
                 <a href="#sobre" class="menu-link">Sobre</a>
             </li>
             <li>
+                <a href="#tecnologias" class="menu-link">Tecnologias</a>
+            </li>
+            <li>
                 <a href="#projetos" class="menu-link">Projetos</a>
             </li>
             <li>
@@ -41,7 +46,7 @@
     </main>
 
     <section id="sobre" class="sobre">
-        <h2 class="sobre-titulo">Sobre mim</h2>
+        <h2 class="titulos">Sobre mim</h2>
         <div class="sobre-div">
             <p class="sobre-paragrafo">Sou desenvolvedor Full Stack, apaixonado por
                 tecnologia e criação de soluções digitais. Tenho experiência
@@ -55,8 +60,76 @@
         </div>
     </section>
 
+    <section id="tecnologias" class="tecnologias">
+        <h2 class="titulos">Tecnologias / Ferramentas</h2>
+
+        <div class="grid">
+
+            <article class="card">
+                <span class="num">01</span>
+                <h3>Front-end</h3>
+                <p>Interfaces responsivas, acessíveis e modernas, com atenção à experiência de quem utiliza.</p>
+                <div class="chips">
+                    <span class="chip"><i class="devicon-html5-plain colored"></i>HTML5</span>
+                    <span class="chip"><i class="devicon-css3-plain colored"></i>CSS3</span>
+                    <span class="chip"><i class="devicon-javascript-plain colored"></i>JavaScript</span>
+                    <span class="chip"><i class="devicon-typescript-plain colored"></i>TypeScript</span>
+                    <span class="chip"><i class="devicon-react-original colored"></i>React.js</span>
+                    <span class="chip"><i class="devicon-react-original colored"></i>React Native</span>
+                    <span class="chip"><i class="devicon-tailwindcss-original colored"></i>Tailwind CSS</span>
+                    <span class="chip"><i class="devicon-styledcomponents-plain colored"></i>Styled Components</span>
+                    <span class="chip"><i class="devicon-vitejs-plain colored"></i>Vite</span>
+                </div>
+            </article>
+
+            <article class="card">
+                <span class="num">02</span>
+                <h3>Back-end</h3>
+                <p>Desenvolvimento de APIs, regras de negócio e autenticação para aplicações web e mobile.</p>
+                <div class="chips">
+                    <span class="chip"><i class="devicon-nodejs-plain colored"></i>Node.js</span>
+                    <span class="chip"><i class="devicon-express-original"></i>Express.js</span>
+                    <span class="chip"><i class="devicon-fastify-plain"></i>Fastify</span>
+                    <span class="chip"><i class="devicon-typescript-plain colored"></i>TypeScript</span>
+                    <span class="chip"><i class="devicon-prisma-original"></i>Prisma ORM</span>
+                    <span class="chip"><i class="devicon-sequelize-plain colored"></i>Sequelize ORM</span>
+                    <span class="chip"><span class="ponto"></span>JWT</span>
+                    <span class="chip"><i class="devicon-firebase-plain colored"></i>Firebase Admin</span>
+                    <span class="chip"><span class="ponto"></span>APIs REST</span>
+                </div>
+            </article>
+
+            <article class="card">
+                <span class="num">03</span>
+                <h3>Banco de dados</h3>
+                <p>Modelagem e armazenamento de dados, em bancos relacionais e não relacionais.</p>
+                <div class="chips">
+                    <span class="chip"><i class="devicon-mongodb-plain colored"></i>MongoDB</span>
+                    <span class="chip"><i class="devicon-postgresql-plain colored"></i>PostgreSQL</span>
+                    <span class="chip"><i class="devicon-mongodb-plain colored"></i>MongoDB Atlas</span>
+                    <span class="chip"><i class="devicon-supabase-plain colored"></i>Supabase</span>
+                </div>
+            </article>
+
+            <article class="card">
+                <span class="num">04</span>
+                <h3>Ferramentas e integrações</h3>
+                <p>Versionamento, pagamentos, requisições e ferramentas para transformar ideias em projetos.</p>
+                <div class="chips">
+                    <span class="chip"><i class="devicon-git-plain colored"></i>Git</span>
+                    <span class="chip"><i class="devicon-github-original"></i>GitHub</span>
+                    <span class="chip"><span class="ponto"></span>Stripe</span>
+                    <span class="chip"><i class="devicon-axios-plain colored"></i>Axios</span>
+                    <span class="chip"><i class="devicon-expo-original"></i>Expo</span>
+                    <span class="chip"><i class="devicon-firebase-plain colored"></i>Firebase</span>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
     <section class="projetos" id="projetos">
-        <h2 class="projeto-titulo">Meus Projetos</h2>
+        <h2 class="titulos">Meus Projetos</h2>
         <div class="projetos-div">
 
             <div class="projetos-card">
@@ -85,7 +158,7 @@
 
                 <img src="img/image.png" alt="Landing page mario e luigi" class="projeto-imagem">
                 <div class="div-projetos">
-                    <h3 class="projeto-titulo">Encanadores Mario e Luigi</h3>
+                    <h3 class="titulos">Encanadores Mario e Luigi</h3>
                     <p class="projeto-descricao">Projeto desenvolvido com HTML, CSS e JavaScript, inspirado nos
                         personagens Mario e Luigi. Uma landing page temática para uma empresa fictícia de encanamentos,
                         com design moderno, apresentação dos serviços e formulário de contato interativo.</p>
@@ -95,7 +168,7 @@
     </section>
 
     <section id="contato" class="contatos">
-        <h2 class="contatos-titulo">Entre em Contato</h2>
+        <h2 class="titulos">Entre em Contato</h2>
         <form class="contatos-formulario" id="formulario">
             <div class="grupo-form">
                 <input type="text" id="nome" placeholder="Nome" class="campo-form" required>
