@@ -4,11 +4,12 @@
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
 }
- 
+
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* evita o menu fixo cobrir o título ao navegar */
 }
- 
+
 :root {
     --primary: #4f46e5;
     --secondary: #7c3aed;
@@ -17,28 +18,35 @@ html {
     --light: #e2e8f0;
     --glass: rgba(255, 255, 255, 0.1);
 }
- 
+
 body {
     background-color: var(--dark);
     color: var(--light);
+    overflow-x: hidden;
 }
- 
+
+/* ===== Navegação ===== */
 .navegacao {
     position: fixed;
     top: 0;
     background-color: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
     width: 100%;
     z-index: 100;
     padding: 1.5rem;
 }
- 
+
+.menu-toggle {
+    display: none; /* só aparece no mobile */
+}
+
 .menu {
     display: flex;
     justify-content: center;
     list-style: none;
     gap: 3rem;
 }
- 
+
 .menu-link {
     text-decoration: none;
     color: var(--light);
@@ -46,7 +54,7 @@ body {
     position: relative;
     padding: 0.5rem 0;
 }
- 
+
 .menu-link::after {
     content: "";
     position: absolute;
@@ -57,48 +65,12 @@ body {
     background: linear-gradient(90deg, var(--primary), var(--secondary));
     transition: width 0.5s ease;
 }
- 
+
 .menu-link:hover::after {
     width: 100%;
 }
 
-.menu-toggle {
-  display: none;
-}
-
-.menu {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin: 0;
-  padding: 1rem;
-  list-style: none;
-}
-
-@media (max-width: 700px) {
-  .menu-toggle {
-    display: block;
-    margin-left: auto;
-    padding: 0.75rem 1rem;
-    background: none;
-    border: 0;
-    color: #fff;
-    font-size: 1.8rem;
-    cursor: pointer;
-  }
-
-  .menu {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .menu.aberto {
-    display: flex;
-  }
-}
- 
+/* ===== Cabeçalho ===== */
 .cabecalho {
     min-height: 100vh;
     display: flex;
@@ -107,7 +79,7 @@ body {
     flex-direction: column;
     text-align: center;
 }
- 
+
 .profile-img {
     width: 180px;
     height: 180px;
@@ -117,30 +89,31 @@ body {
     border: 4px solid var(--glass);
     animation: flutuar 5s ease-in-out infinite;
 }
- 
+
 h1 {
     font-size: 2rem;
     color: var(--primary);
     font-weight: bold;
     margin: 15px 0 5px;
 }
- 
+
 .cabecalho-subtitulo {
     font-size: 1rem;
     color: var(--light);
 }
- 
+
+/* ===== Sobre ===== */
 .sobre {
     padding: 6rem 2rem;
 }
- 
+
 .titulos {
     font-size: 3rem;
     color: var(--light);
     margin-bottom: 25px;
     text-align: center;
 }
- 
+
 .sobre-div {
     padding: 2rem;
     max-width: 800px;
@@ -150,17 +123,18 @@ h1 {
     backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.05);
 }
- 
+
 .sobre-paragrafo {
     text-align: center;
     font-size: 1.2rem;
     margin-bottom: 1rem;
 }
- 
+
+/* ===== Tecnologias ===== */
 .tecnologias {
     padding: 6rem 2rem;
 }
- 
+
 .tecnologias .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -168,7 +142,7 @@ h1 {
     max-width: 1200px;
     margin: 0 auto;
 }
- 
+
 .tecnologias .card {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
@@ -177,38 +151,38 @@ h1 {
     padding: 1.5rem;
     transition: all 0.5s ease;
 }
- 
+
 .tecnologias .card:hover {
     border-color: var(--primary);
     box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
     transform: translateY(-10px);
 }
- 
+
 .tecnologias .num {
     font-size: 0.8rem;
     font-weight: bold;
     color: var(--secondary);
 }
- 
+
 .tecnologias .card h3 {
     margin: 0.5rem 0 0.75rem;
     font-size: 1.4rem;
     color: var(--light);
 }
- 
+
 .tecnologias .card p {
     margin-bottom: 1.5rem;
     color: rgba(226, 232, 240, 0.8);
     font-size: 1rem;
     line-height: 1.6;
 }
- 
+
 .tecnologias .chips {
     display: flex;
     flex-wrap: wrap;
     gap: 0.6rem;
 }
- 
+
 .tecnologias .chip {
     display: inline-flex;
     align-items: center;
@@ -221,27 +195,27 @@ h1 {
     font-weight: 500;
     transition: border-color 0.3s ease;
 }
- 
+
 .tecnologias .chip:hover {
     border-color: var(--primary);
 }
- 
+
 .tecnologias .chip i {
     font-size: 1.2rem;
 }
- 
+
 .tecnologias .chip .ponto {
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background: linear-gradient(45deg, var(--primary), var(--secondary));
 }
- 
+
 /* ===== Projetos ===== */
 .projetos {
     padding: 6rem 2rem;
 }
- 
+
 .projetos-div {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -249,13 +223,13 @@ h1 {
     max-width: 1200px;
     margin: 0 auto;
 }
- 
+
 .projeto-imagem {
     height: 200px;
     width: 100%;
     object-fit: cover;
 }
- 
+
 .projetos-card {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 16px;
@@ -265,27 +239,34 @@ h1 {
     transition: all 0.5s ease;
     cursor: pointer;
 }
- 
+
 .projetos-card:hover {
     box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
     transform: translateY(-10px) scale(1.03);
 }
- 
+
 .div-projetos {
     padding: 1.5rem;
 }
- 
+
+.projeto-titulo {
+    font-size: 1.4rem;
+    color: var(--light);
+    margin-bottom: 0.75rem;
+}
+
 .projeto-descricao {
     color: rgba(226, 232, 240, 0.8);
     font-size: 1rem;
     line-height: 1.6;
     margin-bottom: 5px;
 }
- 
+
+/* ===== Contato ===== */
 .contatos {
     padding: 6rem 2rem;
 }
- 
+
 .contatos-formulario {
     max-width: 600px;
     margin: 0 auto;
@@ -295,11 +276,11 @@ h1 {
     border: 1px solid var(--glass);
     border-radius: 16px;
 }
- 
+
 .grupo-form {
     margin-bottom: 1.5rem;
 }
- 
+
 .campo-form {
     width: 100%;
     padding: 1rem;
@@ -309,11 +290,11 @@ h1 {
     border: 1px solid var(--glass);
     outline: none;
 }
- 
+
 .campo-form:focus {
     border-color: var(--primary);
 }
- 
+
 .botao-form {
     color: var(--light);
     background: linear-gradient(45deg, var(--primary), var(--secondary));
@@ -325,12 +306,13 @@ h1 {
     width: 100%;
     transition: all 0.5s ease;
 }
- 
+
 .botao-form:hover {
     transform: translateY(-4px);
     box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
 }
- 
+
+/* ===== Fundo decorativo ===== */
 .particulas {
     position: fixed;
     top: 0;
@@ -339,19 +321,75 @@ h1 {
     height: 100%;
     z-index: -1;
     opacity: 0.5;
+    pointer-events: none;
     background:
         radial-gradient(circle at 10% 20%, var(--primary) 0%, transparent 20%),
         radial-gradient(circle at 90% 80%, var(--secondary) 0%, transparent 20%),
         var(--dark2);
 }
- 
+
 @keyframes flutuar {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
- 
+
     50% {
         transform: translateY(-20px);
     }
 }
- 
+
+/* ===== Mobile (deve ficar no FINAL do arquivo) ===== */
+@media (max-width: 700px) {
+    html {
+        scroll-padding-top: 4rem;
+    }
+
+    .navegacao {
+        padding: 0.5rem 1rem;
+    }
+
+    .menu-toggle {
+        display: block;
+        margin-left: auto;
+        padding: 0.5rem;
+        background: none;
+        border: 0;
+        color: var(--light);
+        font-size: 1.8rem;
+        line-height: 1;
+        cursor: pointer;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+
+    .menu.aberto {
+        display: flex;
+    }
+
+    .sobre,
+    .tecnologias,
+    .projetos,
+    .contatos {
+        padding: 4rem 1rem;
+    }
+
+    .titulos {
+        font-size: 2rem;
+    }
+
+    .sobre-paragrafo {
+        font-size: 1rem;
+    }
+
+    .projetos-div {
+        grid-template-columns: 1fr;
+    }
+}
