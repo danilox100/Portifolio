@@ -7,7 +7,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem; /* evita o menu fixo cobrir o título ao navegar */
+    scroll-padding-top: 90px;
 }
 
 :root {
@@ -22,22 +22,56 @@ html {
 body {
     background-color: var(--dark);
     color: var(--light);
-    overflow-x: hidden;
 }
 
-/* ===== Navegação ===== */
 .navegacao {
-    position: fixed;
-    top: 0;
-    background-color: rgba(15, 23, 42, 0.8);
-    backdrop-filter: blur(10px);
-    width: 100%;
+    position: sticky;
+    top: 16px;
     z-index: 100;
-    padding: 1.5rem;
+    width: calc(100% - 32px);
+    max-width: 1100px;
+    margin: 16px auto 0;
+    padding: 0.9rem 1.5rem;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid var(--glass);
+    border-radius: 999px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.4s ease;
+}
+
+.navegacao.escondida {
+    transform: translateY(calc(-100% - 32px));
 }
 
 .menu-toggle {
-    display: none; /* só aparece no mobile */
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--light);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+@media (max-width: 720px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+
+    .menu.aberto {
+        display: flex;
+    }
+
+    .navegacao {
+        border-radius: 28px;
+    }
 }
 
 .menu {
@@ -70,7 +104,6 @@ body {
     width: 100%;
 }
 
-/* ===== Cabeçalho ===== */
 .cabecalho {
     min-height: 100vh;
     display: flex;
@@ -102,7 +135,6 @@ h1 {
     color: var(--light);
 }
 
-/* ===== Sobre ===== */
 .sobre {
     padding: 6rem 2rem;
 }
@@ -130,7 +162,6 @@ h1 {
     margin-bottom: 1rem;
 }
 
-/* ===== Tecnologias ===== */
 .tecnologias {
     padding: 6rem 2rem;
 }
@@ -156,12 +187,6 @@ h1 {
     border-color: var(--primary);
     box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
     transform: translateY(-10px);
-}
-
-.tecnologias .num {
-    font-size: 0.8rem;
-    font-weight: bold;
-    color: var(--secondary);
 }
 
 .tecnologias .card h3 {
@@ -211,7 +236,6 @@ h1 {
     background: linear-gradient(45deg, var(--primary), var(--secondary));
 }
 
-/* ===== Projetos ===== */
 .projetos {
     padding: 6rem 2rem;
 }
@@ -249,12 +273,6 @@ h1 {
     padding: 1.5rem;
 }
 
-.projeto-titulo {
-    font-size: 1.4rem;
-    color: var(--light);
-    margin-bottom: 0.75rem;
-}
-
 .projeto-descricao {
     color: rgba(226, 232, 240, 0.8);
     font-size: 1rem;
@@ -262,14 +280,20 @@ h1 {
     margin-bottom: 5px;
 }
 
-/* ===== Contato ===== */
 .contatos {
     padding: 6rem 2rem;
 }
 
-.contatos-formulario {
+.contatos-conteudo {
     max-width: 600px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contatos-formulario {
+    width: 100%;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(5px);
     padding: 2rem;
@@ -291,8 +315,59 @@ h1 {
     outline: none;
 }
 
+textarea.campo-form {
+    resize: none;
+    height: 120px;
+    overflow-y: auto;
+}
+
 .campo-form:focus {
     border-color: var(--primary);
+}
+
+.escolha-envio {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.opcao-envio {
+    position: relative;
+    cursor: pointer;
+}
+
+.opcao-envio input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.opcao-envio span {
+    display: block;
+    text-align: center;
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--light);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.opcao-envio:hover span {
+    border-color: var(--primary);
+}
+
+.opcao-envio input:checked + span {
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    border-color: transparent;
+    font-weight: bold;
+}
+
+.opcao-envio input:focus-visible + span {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
 }
 
 .botao-form {
@@ -312,7 +387,38 @@ h1 {
     box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
 }
 
-/* ===== Fundo decorativo ===== */
+.contatos-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.contato-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1.2rem;
+    text-decoration: none;
+    color: var(--light);
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--glass);
+    border-radius: 12px;
+    transition: all 0.5s ease;
+}
+
+.contato-link i {
+    font-size: 1.4rem;
+}
+
+.contato-link:hover {
+    border-color: var(--primary);
+    box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
+    transform: translateY(-4px);
+}
+
 .particulas {
     position: fixed;
     top: 0;
@@ -321,7 +427,6 @@ h1 {
     height: 100%;
     z-index: -1;
     opacity: 0.5;
-    pointer-events: none;
     background:
         radial-gradient(circle at 10% 20%, var(--primary) 0%, transparent 20%),
         radial-gradient(circle at 90% 80%, var(--secondary) 0%, transparent 20%),
@@ -329,67 +434,11 @@ h1 {
 }
 
 @keyframes flutuar {
-
-    0%,
-    100% {
+    0%, 100% {
         transform: translateY(0);
     }
 
     50% {
         transform: translateY(-20px);
-    }
-}
-
-/* ===== Mobile (deve ficar no FINAL do arquivo) ===== */
-@media (max-width: 700px) {
-    html {
-        scroll-padding-top: 4rem;
-    }
-
-    .navegacao {
-        padding: 0.5rem 1rem;
-    }
-
-    .menu-toggle {
-        display: block;
-        margin-left: auto;
-        padding: 0.5rem;
-        background: none;
-        border: 0;
-        color: var(--light);
-        font-size: 1.8rem;
-        line-height: 1;
-        cursor: pointer;
-    }
-
-    .menu {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        padding: 1rem 0;
-    }
-
-    .menu.aberto {
-        display: flex;
-    }
-
-    .sobre,
-    .tecnologias,
-    .projetos,
-    .contatos {
-        padding: 4rem 1rem;
-    }
-
-    .titulos {
-        font-size: 2rem;
-    }
-
-    .sobre-paragrafo {
-        font-size: 1rem;
-    }
-
-    .projetos-div {
-        grid-template-columns: 1fr;
     }
 }
