@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-tema="escuro">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        try {
+            document.documentElement.setAttribute('data-tema', localStorage.getItem('tema') === 'claro' ? 'claro' : 'escuro');
+        } catch (erro) { }
+    </script>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="tecnologias.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
@@ -18,45 +23,82 @@
     <div class="particulas"></div>
 
     <nav class="navegacao">
-        <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">☰</button>
+        <button type="button" class="menu-toggle" aria-label="Abrir menu" aria-expanded="false"
+            aria-controls="menu">☰</button>
         <ul class="menu" id="menu">
-            <li><a href="#inicio" class="menu-link">Início</a></li>
-            <li><a href="#sobre" class="menu-link">Sobre</a></li>
-            <li><a href="#tecnologias" class="menu-link">Tecnologias</a></li>
-            <li><a href="#projetos" class="menu-link">Projetos</a></li>
-            <li><a href="#contato" class="menu-link">Contato</a></li>
+            <li><a href="#inicio" class="menu-link" data-i18n="menu.inicio">Início</a></li>
+            <li><a href="#sobre" class="menu-link" data-i18n="menu.sobre">Sobre</a></li>
+            <li><a href="#tecnologias" class="menu-link" data-i18n="menu.tecnologias">Tecnologias</a></li>
+            <li><a href="#projetos" class="menu-link" data-i18n="menu.projetos">Projetos</a></li>
+            <li><a href="#contato" class="menu-link" data-i18n="menu.contato">Contato</a></li>
         </ul>
+        <div class="controles">
+            <a href="#contato" class="botao-contratar" data-i18n="botao.contratar">Contrate-me</a>
+            <button type="button" class="controle" id="botao-idioma" aria-label="Mudar para inglês">EN</button>
+            <button type="button" class="controle" id="botao-tema" aria-label="Mudar para tema claro">
+                <svg class="icone-sol" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path
+                        d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41">
+                    </path>
+                </svg>
+                <svg class="icone-lua" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
     </nav>
 
     <main id="inicio" class="cabecalho">
-        <div>
-            <img src="img/dan2.jpeg" alt="Foto de Danilo" class="profile-img">
-            <h1>Danilo Nascimento</h1>
-            <p class="cabecalho-subtitulo">Desenvolvedor Full Stack</p>
+        <div class="cabecalho-texto">
+            <h1 class="cabecalho-saudacao">
+                <span data-i18n="cabecalho.saudacao">Olá, sou o</span>
+                <span class="destaque">Danilo</span>
+            </h1>
+            <p class="cabecalho-subtitulo" data-i18n="cabecalho.cargo">Desenvolvedor Full Stack · React · Node.js</p>
+            <p class="cabecalho-descricao" data-i18n="cabecalho.descricao">Desenvolvo aplicações web completas, do
+                front-end ao back-end, com foco em interfaces modernas, APIs seguras e soluções que transformam ideias
+                em projetos funcionais.</p>
+            <div class="cabecalho-botoes">
+                <a href="#projetos" class="botao-principal"><span data-i18n="cabecalho.verProjetos">Ver projetos</span>
+                    →</a>
+                <a href="#contato" class="botao-secundario" data-i18n="cabecalho.contato">Fale comigo</a>
+            </div>
+            <div class="cabecalho-redes">
+                <a href="https://github.com/danilox100/" target="_blank" rel="noopener noreferrer" class="rede"
+                    aria-label="GitHub"><i class="devicon-github-original"></i></a>
+                <a href="https://www.linkedin.com/in/danilo-nascimento-silva/" target="_blank" rel="noopener noreferrer"
+                    class="rede" aria-label="LinkedIn"><i class="devicon-linkedin-plain"></i></a>
+            </div>
+        </div>
+        <div class="foto-moldura">
+            <img src="img/dan2.jpeg" alt="Foto de Danilo" class="profile-img" data-i18n-alt="cabecalho.foto">
         </div>
     </main>
 
     <section id="sobre" class="sobre">
-        <h2 class="titulos">Sobre mim</h2>
+        <h2 class="titulos" data-i18n="sobre.titulo">Sobre mim</h2>
         <div class="sobre-div">
-            <p class="sobre-paragrafo">Sou desenvolvedor Full Stack, apaixonado por
+            <p class="sobre-paragrafo" data-i18n="sobre.texto">Sou desenvolvedor Full Stack, apaixonado por
                 tecnologia e criação de soluções digitais. Tenho experiência
                 no desenvolvimento de aplicações web, utilizando React, JavaScript, Node.js e bancos de dados.
                 Estou sempre buscando aprender novas tecnologias, aprimorar minhas habilidades e transformar ideias em
-                projetos
-                funcionais e modernos.
+                projetos funcionais e modernos.
             </p>
         </div>
     </section>
 
     <section id="tecnologias" class="tecnologias">
-        <h2 class="titulos">Tecnologias / Ferramentas</h2>
+        <h2 class="titulos" data-i18n="tec.titulo">Tecnologias / Ferramentas</h2>
 
         <div class="grid">
 
             <article class="card">
                 <h3>Front-end</h3>
-                <p>Interfaces responsivas, acessíveis e modernas, com atenção à experiência de quem utiliza.</p>
+                <p data-i18n="tec.front.desc">Interfaces responsivas, acessíveis e modernas, com atenção à experiência
+                    de quem utiliza.</p>
                 <div class="chips">
                     <span class="chip"><i class="devicon-html5-plain colored"></i>HTML5</span>
                     <span class="chip"><i class="devicon-css3-plain colored"></i>CSS3</span>
@@ -72,7 +114,8 @@
 
             <article class="card">
                 <h3>Back-end</h3>
-                <p>Desenvolvimento de APIs, regras de negócio e autenticação para aplicações web e mobile.</p>
+                <p data-i18n="tec.back.desc">Desenvolvimento de APIs, regras de negócio e autenticação para aplicações
+                    web e mobile.</p>
                 <div class="chips">
                     <span class="chip"><i class="devicon-nodejs-plain colored"></i>Node.js</span>
                     <span class="chip"><i class="devicon-express-original"></i>Express.js</span>
@@ -82,13 +125,14 @@
                     <span class="chip"><i class="devicon-sequelize-plain colored"></i>Sequelize ORM</span>
                     <span class="chip"><span class="ponto"></span>JWT</span>
                     <span class="chip"><i class="devicon-firebase-plain colored"></i>Firebase Admin</span>
-                    <span class="chip"><span class="ponto"></span>APIs REST</span>
+                    <span class="chip"><span class="ponto"></span><span data-i18n="tec.apis">APIs REST</span></span>
                 </div>
             </article>
 
             <article class="card">
-                <h3>Banco de dados</h3>
-                <p>Modelagem e armazenamento de dados, em bancos relacionais e não relacionais.</p>
+                <h3 data-i18n="tec.bd.titulo">Banco de dados</h3>
+                <p data-i18n="tec.bd.desc">Modelagem e armazenamento de dados, em bancos relacionais e não relacionais.
+                </p>
                 <div class="chips">
                     <span class="chip"><i class="devicon-mongodb-plain colored"></i>MongoDB</span>
                     <span class="chip"><i class="devicon-postgresql-plain colored"></i>PostgreSQL</span>
@@ -98,8 +142,9 @@
             </article>
 
             <article class="card">
-                <h3>Ferramentas e integrações</h3>
-                <p>Versionamento, pagamentos, requisições e ferramentas para transformar ideias em projetos.</p>
+                <h3 data-i18n="tec.ferr.titulo">Ferramentas e integrações</h3>
+                <p data-i18n="tec.ferr.desc">Versionamento, pagamentos, requisições e ferramentas para transformar
+                    ideias em projetos.</p>
                 <div class="chips">
                     <span class="chip"><i class="devicon-git-plain colored"></i>Git</span>
                     <span class="chip"><i class="devicon-github-original"></i>GitHub</span>
@@ -114,62 +159,101 @@
     </section>
 
     <section class="projetos" id="projetos">
-        <h2 class="titulos">Meus Projetos</h2>
+        <h2 class="titulos" data-i18n="proj.titulo">Meus Projetos</h2>
         <div class="projetos-div">
 
-            <div class="projetos-card">
-                <img src="img/cadastro.png" alt="Projeto Cadastro de Usuários" class="projeto-imagem">
-                <div class="div-projetos">
-                    <h3 class="projeto-titulo">Cadastro de Usuários</h3>
-                    <p class="projeto-descricao">Aplicação Full Stack de cadastro e gerenciamento de usuários,
-                        desenvolvida com React, Node.js e banco de dados. Conta com cadastro, listagem de usuários e
-                        integração entre Front-end e Back-end por meio de uma API REST, com interface responsiva
-                        utilizando Styled Components.</p>
+            <article class="projetos-card">
+                <div class="projeto-midia">
+                    <img src="img/cadastro.png" alt="Projeto Cadastro de Usuários" class="projeto-imagem" loading="lazy"
+                        data-i18n-alt="proj.1.alt">
                 </div>
-            </div>
+                <div class="div-projetos">
+                    <h3 class="projeto-titulo" data-i18n="proj.1.titulo">Cadastro de Usuários</h3>
+                    <p class="projeto-descricao" data-i18n="proj.1.desc">Aplicação Full Stack de cadastro e
+                        gerenciamento de usuários, com listagem e integração entre front-end e back-end por meio de uma
+                        API REST, em uma interface responsiva.</p>
+                    <div class="projeto-tecnologias">
+                        <span class="projeto-chip"><i class="devicon-react-original colored"></i>React</span>
+                        <span class="projeto-chip"><i class="devicon-nodejs-plain colored"></i>Node.js</span>
+                        <span class="projeto-chip"><i class="devicon-styledcomponents-plain colored"></i>Styled
+                            Components</span>
+                    </div>
+                    <div class="projeto-links">
+                        <a href="https://github.com/danilox100/cadastro-usuariov2-main" target="_blank"
+                            rel="noopener noreferrer" class="projeto-botao"><i
+                                class="devicon-github-original"></i>Front-end</a>
+                        <a href="https://github.com/danilox100/api-definitiva" target="_blank" rel="noopener noreferrer"
+                            class="projeto-botao"><i class="devicon-github-original"></i>Back-end</a>
+                    </div>
+                </div>
+            </article>
 
-            <div class="projetos-card">
-                <img src="img/conversor.png" alt="Projeto Conversor de Moedas" class="projeto-imagem">
-                <div class="div-projetos">
-                    <h3 class="projeto-titulo">Conversor de Moedas</h3>
-                    <p class="projeto-descricao">Um aplicativo web que permite converter valores entre diferentes
-                        moedas,
-                        utilizando taxas de câmbio atualizadas.</p>
+            <article class="projetos-card">
+                <div class="projeto-midia">
+                    <img src="img/conversor.png" alt="Projeto Conversor de Moedas" class="projeto-imagem" loading="lazy"
+                        data-i18n-alt="proj.2.alt">
                 </div>
-            </div>
+                <div class="div-projetos">
+                    <h3 class="projeto-titulo" data-i18n="proj.2.titulo">Conversor de Moedas</h3>
+                    <p class="projeto-descricao" data-i18n="proj.2.desc">Um aplicativo web que permite converter valores
+                        entre diferentes
+                        moedas, utilizando taxas de câmbio atualizadas.</p>
+                    <div class="projeto-links">
+                        <a href="https://github.com/danilox100/Conversor-de-moedas" target="_blank"
+                            rel="noopener noreferrer" class="projeto-botao"><i class="devicon-github-original"></i><span
+                                data-i18n="proj.codigo">Código</span></a>
+                    </div>
+                </div>
+            </article>
 
-            <div class="projetos-card">
-                <img src="img/image.png" alt="Landing page Mario e Luigi" class="projeto-imagem">
-                <div class="div-projetos">
-                    <h3 class="projeto-titulo">Encanadores Mario e Luigi</h3>
-                    <p class="projeto-descricao">Projeto desenvolvido com HTML, CSS e JavaScript, inspirado nos
-                        personagens Mario e Luigi. Uma landing page temática para uma empresa fictícia de encanamentos,
-                        com design moderno, apresentação dos serviços e formulário de contato interativo.</p>
+            <article class="projetos-card">
+                <div class="projeto-midia">
+                    <img src="img/image.png" alt="Landing page Mario e Luigi" class="projeto-imagem" loading="lazy"
+                        data-i18n-alt="proj.3.alt">
                 </div>
-            </div>
+                <div class="div-projetos">
+                    <h3 class="projeto-titulo" data-i18n="proj.3.titulo">Encanadores Mario e Luigi</h3>
+                    <p class="projeto-descricao" data-i18n="proj.3.desc">Landing page temática para uma empresa fictícia
+                        de encanamentos, inspirada em Mario e Luigi, com design moderno, apresentação dos serviços e
+                        formulário de contato interativo.</p>
+                    <div class="projeto-tecnologias">
+                        <span class="projeto-chip"><i class="devicon-html5-plain colored"></i>HTML5</span>
+                        <span class="projeto-chip"><i class="devicon-css3-plain colored"></i>CSS3</span>
+                        <span class="projeto-chip"><i class="devicon-javascript-plain colored"></i>JavaScript</span>
+                    </div>
+                    <div class="projeto-links">
+                        <a href="https://github.com/danilox100/Mario-bros" target="_blank" rel="noopener noreferrer"
+                            class="projeto-botao"><i class="devicon-github-original"></i><span
+                                data-i18n="proj.codigo">Código</span></a>
+                    </div>
+                </div>
+            </article>
         </div>
     </section>
 
     <section id="contato" class="contatos">
-        <h2 class="titulos">Entre em Contato</h2>
+        <h2 class="titulos" data-i18n="contato.titulo">Entre em Contato</h2>
 
         <div class="contatos-conteudo">
             <form class="contatos-formulario" id="formulario">
                 <div class="grupo-form">
-                    <input type="text" id="nome" placeholder="Nome" class="campo-form" required>
+                    <input type="text" id="nome" placeholder="Nome" class="campo-form"
+                        data-i18n-placeholder="contato.nome" required>
                 </div>
                 <div class="grupo-form">
-                    <textarea id="mensagem" placeholder="Digite sua Mensagem" class="campo-form" required></textarea>
+                    <textarea id="mensagem" placeholder="Digite sua Mensagem" class="campo-form" maxlength="500"
+                        data-i18n-placeholder="contato.mensagem" required></textarea>
                 </div>
 
-                <div class="grupo-form escolha-envio" role="radiogroup" aria-label="Enviar mensagem por">
+                <div class="grupo-form escolha-envio" role="radiogroup" aria-label="Enviar mensagem por"
+                    data-i18n-aria="contato.enviarPor">
                     <label class="opcao-envio">
                         <input type="radio" name="canal" value="whatsapp" checked>
-                        <span>WhatsApp</span>
+                        <span data-i18n="contato.whatsapp">WhatsApp</span>
                     </label>
                     <label class="opcao-envio">
                         <input type="radio" name="canal" value="email">
-                        <span>E-mail</span>
+                        <span data-i18n="contato.email">E-mail</span>
                     </label>
                 </div>
 
@@ -177,13 +261,13 @@
             </form>
 
             <div class="contatos-links">
-                <a href="mailto:seuemail@exemplo.com" class="contato-link">
+                <a href="mailto:nascimentod792@gmail.com" class="contato-link">
                     <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <rect x="3" y="5" width="18" height="14" rx="2"></rect>
                         <path d="m3 7 9 6 9-6"></path>
                     </svg>
-                    E-mail
+                    <span data-i18n="contato.email">E-mail</span>
                 </a>
                 <a href="https://github.com/danilox100/" target="_blank" rel="noopener noreferrer" class="contato-link">
                     <i class="devicon-github-original"></i>
@@ -198,6 +282,7 @@
         </div>
     </section>
 
+    <script src="traducoes.js"></script>
     <script src="script.js"></script>
 </body>
 
